@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:8080/api/products";
+const url = "http://localhost:8081/api/products";
 
 export const getProducts = async () => {
   try {
@@ -8,6 +8,7 @@ export const getProducts = async () => {
     return response.data;
   } catch (error) {
     console.log("Error respose:", error.response);
+    return [];
   }
 };
 
