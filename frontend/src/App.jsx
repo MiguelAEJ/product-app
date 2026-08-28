@@ -1,53 +1,15 @@
-import { useState, useEffect } from "react";
-import {
-  getProducts,
-  createProduct,
-  updateProduct,
-  deleteProduct,
-} from "./api/client";
 import ProductItem from "./components/ProductItem";
 import ProductForm from "./components/ProductForm";
+import { useProducts } from "./hooks/useProducts";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [editingProduct, setEditingProduct] = useState(null);
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
-  async function loadProducts() {
-    const data = await getProducts();
-    setProducts(data);
-  }
-
-  async function handleSave(productData) {
-    if (editingProduct) {
-      await updateProduct(editingProduct.id, productData);
-    } else {
-      await createProduct(productData);
-    }
-    setEditingProduct(null);
-    await loadProducts();
-  }
-
-  async function handleDelete(id) {
-    await deleteProduct(id);
-    await loadProducts();
-  }
-
-  function handleEdit(product) {
-    setEditingProduct(product);
-  }
+  const { products, editingProduct, handleSave, handleDelete, handleEdit } = useProducts();
 
   return (
     <div>
       <h1>Products</h1>
 
-      <ProductForm
-        editingProduct={editingProduct}
-        onSave={handleSave}
-      />
+      <ProductForm editingProduct={editingProduct} onSave={handleSave} />
 
       <table>
         <thead>
@@ -60,12 +22,7 @@ function App() {
         </thead>
         <tbody>
           {products.map((product) => (
-            <ProductItem
-              key={product.id}
-              product={product}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-            />
+            <ProductItem key={product.id} product={product} onDelete={handleDelete} onEdit={handleEdit} />
           ))}
         </tbody>
       </table>
