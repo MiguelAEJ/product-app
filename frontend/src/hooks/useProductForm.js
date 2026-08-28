@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function ProductForm({ editingProduct, onSave }) {
+export function useProductForm(editingProduct, onSave) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
@@ -30,29 +30,5 @@ function ProductForm({ editingProduct, onSave }) {
     setStock("");
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Stock"
-        value={stock}
-        onChange={(e) => setStock(e.target.value)}
-      />
-      <button type="submit">{editingProduct ? "Update" : "Create"}</button>
-    </form>
-  );
+  return { name, price, stock, setName, setPrice, setStock, handleSubmit };
 }
-
-export default ProductForm;

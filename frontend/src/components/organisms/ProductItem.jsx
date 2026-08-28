@@ -1,3 +1,5 @@
+import { Button } from "../atoms/Button";
+
 function ProductItem({ product, onDelete, onEdit }) {
   return (
     <tr>
@@ -5,8 +7,8 @@ function ProductItem({ product, onDelete, onEdit }) {
       <td>{product.price}</td>
       <td>{product.stock}</td>
       <td>
-        <button onClick={() => onEdit(product)}>Edit</button>
-        <button onClick={() => onDelete(product.id)}>Delete</button>
+        <Button onClick={() => onEdit(product)}>Edit</Button>
+        <Button onClick={() => onDelete(product.id)}>Delete</Button>
       </td>
     </tr>
   );
