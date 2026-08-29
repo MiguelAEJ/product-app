@@ -22,7 +22,7 @@ export function useProductForm(editingProduct, onSave) {
     const product = {
       name,
       price: Number(price),
-      stock: Number(stock),
+      stock: Math.trunc(Number(stock)),
     };
     onSave(product);
     setName("");
