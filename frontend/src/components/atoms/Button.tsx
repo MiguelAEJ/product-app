@@ -1,4 +1,6 @@
-export const Button = ({ children, type = "button", onClick, disabled, variant = "primary" }) => {
+import { ButtonProps } from "../../types/products";
+
+export const Button = ({ children, type = "button", onClick, disabled, variant = "primary" }: ButtonProps) => {
   const variants = {
     primary: "bg-accent text-white hover:opacity-90",
     danger: "bg-transparent text-red-600 border border-red-600 hover:bg-red-50",

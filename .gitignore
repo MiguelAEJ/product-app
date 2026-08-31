@@ -48,6 +48,7 @@ frontend/dist-ssr
 ### Personal notes ###
 guide_full.md
 guide_upgrades.md
+guide_migration.md
 
 ### Editor directories and files ###
 .vscode/*

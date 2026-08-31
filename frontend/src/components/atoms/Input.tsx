@@ -1,4 +1,6 @@
-export const Input = ({ id, type, value, onChange, placeholder, disabled, min, step }) => (
+import { InputProps } from "../../types/products";
+
+export const Input = ({ id, type, value, onChange, placeholder, disabled, min, step }: InputProps) => (
   <input
     id={id}
     type={type}

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, SubmitEvent } from "react";
+import { ProductFormProps, UseProductFormReturn } from "../types/products";
 
-export function useProductForm(editingProduct, onSave) {
+export function useProductForm({ editingProduct, onSave }: ProductFormProps): UseProductFormReturn {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
@@ -8,8 +9,8 @@ export function useProductForm(editingProduct, onSave) {
   useEffect(() => {
     if (editingProduct) {
       setName(editingProduct.name);
-      setPrice(editingProduct.price);
-      setStock(editingProduct.stock);
+      setPrice(String(editingProduct.price));
+      setStock(String(editingProduct.stock));
     } else {
       setName("");
       setPrice("");
@@ -17,7 +18,7 @@ export function useProductForm(editingProduct, onSave) {
     }
   }, [editingProduct]);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     const product = {
       name,

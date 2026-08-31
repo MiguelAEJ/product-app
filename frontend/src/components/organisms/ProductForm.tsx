@@ -1,23 +1,14 @@
 import { useProductForm } from "../../hooks/useProductForm";
 import { Button } from "../atoms/Button";
 import { FormField } from "../molecules/FormField";
+import { ProductFormProps } from "../../types/products";
 
-function ProductForm({ editingProduct, onSave }) {
-  const { name, price, stock, setName, setPrice, setStock, handleSubmit } =
-    useProductForm(editingProduct, onSave);
+function ProductForm({ editingProduct, onSave }: ProductFormProps) {
+  const { name, price, stock, setName, setPrice, setStock, handleSubmit } = useProductForm({ editingProduct, onSave });
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex items-end gap-4"
-    >
-      <FormField
-        id="name"
-        label="Name"
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+    <form onSubmit={handleSubmit} className="flex items-end gap-4">
+      <FormField id="name" label="Name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <FormField
         id="price"
         label="Price"

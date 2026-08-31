@@ -1,6 +1,7 @@
 import ProductItem from "./ProductItem";
+import { ProductListProps } from "../../types/products";
 
-function ProductList({ products, onDelete, onEdit }) {
+function ProductList({ products, onDelete, onEdit }: ProductListProps) {
   return (
     <table className="w-full border-collapse text-left text-sm">
       <thead>
